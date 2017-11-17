@@ -8,7 +8,6 @@ package systems.tech247.pdreditors;
 import java.awt.Component;
 import java.io.IOException;
 import javax.persistence.EntityManager;
-import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import org.netbeans.spi.actions.AbstractSavable;
 import org.openide.util.Lookup;
@@ -360,39 +359,92 @@ public final class EmpCheckListPanel extends javax.swing.JPanel implements Looku
             emp = e;
             
             disableInput();
-            
+            try{
             cbApplicationForm.setSelected(e.getApplicationForm());
             applicationForm = e.getApplicationForm();
+            }catch(NullPointerException ex){
+                
+            }
+            try{
             cbBankDetails.setSelected(e.getBankDetailsForm());
             bankDetails = e.getBankDetailsForm();
+            }catch (NullPointerException ex){
+                
+            }
+            try{
             cbCVCopy.setSelected(e.getCVCopy());
             cvCopy = e.getCVCopy();
+            }catch(NullPointerException ex){
+                
+            }
+            try{    
             cbEmploymentLetter.setSelected(e.getSignedAppointmentLetter());
             employeeLetter = e.getSignedAppointmentLetter();
+            }catch(NullPointerException ex){
+            
+            }
+            try{
             cbHandBook.setSelected(e.getEmployeeHandbook());
-            handbook = e.getEmployeeHandbook();
+            handbook = e.getEmployeeHandbook();    
+            }catch(NullPointerException ex){
+                
+            }
+            
+            try{
             cbIDCopy.setSelected(e.getIDCardCopy());
             idCopy = e.getIDCardCopy();
+            }catch(NullPointerException ex){
+                
+            }
+            
+            try{
             cbNSSFCopy.setSelected(e.getNSSFCopy());
             nssfCopy = e.getNSSFCopy();
+            }catch(NullPointerException ex){
+                
+            }
+            try{
             cbTaskBreakDown.setSelected(e.getJobDescription());
             jd = e.getJobDescription();
+            }catch(NullPointerException ex){
+                
+            }
+            try{
             cbOrientation.setSelected(e.getOrientation());
             orientation = e.getOrientation();
+            }catch(NullPointerException ex){
+                
+            }
+            try{
             cbPINCopy.setSelected(e.getPINCopy());
             pinCopy = e.getPINCopy();
+            }catch(NullPointerException ex){
+                
+            }
+            try{
             cbReferees.setSelected(e.getRefereesCheck());
             referees = e.getRefereesCheck();
+            }catch(NullPointerException ex){
+                
+            }
+            try{
             cbTestimonials.setSelected(e.getTestimonials());
             testimonials = e.getTestimonials();
+            }catch(NullPointerException ex){
+                
+            }
             try{
             cbTraining.setSelected(e.getTrainingAchieved());
             training = e.getTrainingAchieved();
             }catch(NullPointerException exp){
                 
             }
+            try{
             cbSignedTA.setSelected(e.getSignedTermsAndConditions());
             terms = e.getSignedTermsAndConditions();
+            }catch(NullPointerException ex){
+                
+            }
         }
     }
     
