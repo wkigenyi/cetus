@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+AutoUpdate-Show-In-Client: false
+OpenIDE-Module: systems.tech247.eclipse
+OpenIDE-Module-Localizing-Bundle: systems/tech247/eclipse/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

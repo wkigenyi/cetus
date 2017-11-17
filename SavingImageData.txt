@@ -1,0 +1,19 @@
+BufferedImage imm = ImageIO.read(url);
+
+Then convert it to a byte array with:
+
+byte[] immAsBytes = 
+ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//use another encoding if JPG is innappropriate for you
+ImageIO.write(imm, "jpg", baos );
+baos.flush();
+byte[] immAsBytes = baos.toByteArray();
+baos.close();
+
+Then store the byte array as recommended by this article as a VARBINARY in the database. In your JDBC code, you should wrap the byte array in a ByteArrayInputStream and set the PreparedStatement parameter as a BinaryStream:
+
+PreparedStatement pstmt = commection.prepareStatement("INSERT INTO IMAGES (image) VALUES(?)");
+ByteArrayInputStream bais = new ByteArrayInputStream(immAsBytes);
+pstmt.setBinaryStream(1, bais, immAsBytes.length);
+pstmt.executeUpdate();
+pstmt.close();

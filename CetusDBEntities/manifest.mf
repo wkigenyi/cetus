@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+AutoUpdate-Show-In-Client: true
+OpenIDE-Module: systems.tech247.dbentities
+OpenIDE-Module-Localizing-Bundle: systems/tech247/dbentities/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+
