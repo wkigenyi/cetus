@@ -829,6 +829,10 @@ public final class EditorNewEmployeePanel extends javax.swing.JPanel implements 
     }
     
     void prepareAndSave(){
+        
+        
+            
+        
         entityManager.getTransaction().begin();    
         
         
@@ -904,10 +908,12 @@ public final class EditorNewEmployeePanel extends javax.swing.JPanel implements 
         @Override
         protected void handleSave() throws IOException {
             
-            //If it is an update
-            if(emp != null ){
+            
             Utility.editorIC.remove(this);
             unregister();
+            //If it is an update
+            if(emp != null ){
+            
             entityManager.getTransaction().begin();
             Employees e = entityManager.find(Employees.class, emp.getEmployeeID());
             if(null != tribeID){
@@ -959,6 +965,49 @@ public final class EditorNewEmployeePanel extends javax.swing.JPanel implements 
             
             entityManager.getTransaction().commit();
             
+            }else{
+                entityManager.getTransaction().begin();    
+        
+        
+            String insertSQL = "INSERT INTO [dbo].[Employees]\n" +
+"           ([SurName]\n" +
+"           ,[OtherNames]\n" +
+"           ,[DateOfBirth]\n" +
+"           ,[Gender]\n" +
+"           ,[MaritalStatus]\n" +
+"           ,[NationalityID]\n" +
+"           ,[TribeID]\n" +
+"           ,[ReligionID]\n" +
+"           ,[PassportNo]\n" +
+"           ,[NHIFNo]\n" +
+"           ,[NSSFNo]\n" +
+"           ,[Photo]\n" +
+"           ,[isDeleted]\n" +
+"           ,[EmpCode]\n" +                    
+"           ,[isDisengaged])\n" +                    
+"     VALUES\n" +
+"           (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            Query query = entityManager.createNativeQuery(insertSQL);
+            query.setParameter(1, lname);
+            query.setParameter(2, fname);
+            query.setParameter(3, dob);
+            query.setParameter(4, genderID);
+            query.setParameter(5, maritalStatusID);
+            query.setParameter(6, nationalityID.getNationalityID());
+            query.setParameter(7, tribeID.getTribeID());
+            query.setParameter(8, religionID.getReligionID());
+            query.setParameter(9, passportNumber);
+            query.setParameter(11, nssfNumber);
+            query.setParameter(12, imageAsBytes);
+            query.setParameter(13, false);
+            query.setParameter(14, randomCode(12));
+            query.setParameter(15, false);
+            query.executeUpdate();
+            entityManager.getTransaction().commit(); 
+            
+            resetEditor();
+            
+        
             }
             
         }
